@@ -4,7 +4,7 @@
 
 SELECT
     t.cod,
-    t.nome,
+    t.nome AS tecnicos,
     COUNT(*) AS qtd_horas_extras_aprovadas
 FROM tecnico t
 JOIN info_horas_extras_tec ih 
