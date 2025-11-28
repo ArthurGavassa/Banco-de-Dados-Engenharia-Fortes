@@ -1,0 +1,433 @@
+-- ==========================================
+-- BLOCO 1: GESTOR (6 linhas)
+-- ==========================================
+INSERT INTO gestor (cod, nome, email, senha, telefone) VALUES
+(1, 'Marcelo Andrade',  'marcelo.andrade@fortes.com',  'senha123', '(27) 99811-4501'),
+(2, 'Fernanda Duarte',  'fernanda.duarte@fortes.com',  'senha123', '(27) 99772-7840'),
+(3, 'Rafael Monteiro',  'rafael.monteiro@fortes.com',  'senha123', '(27) 99652-1193'),
+(4, 'Juliana Paiva',    'juliana.paiva@fortes.com',    'senha123', '(27) 99941-2287'),
+(5, 'Carlos Menezes',   'carlos.menezes@fortes.com',   'senha123', '(27) 99562-4478'),
+(6, 'Aline Barbosa',    'aline.barbosa@fortes.com',    'senha123', '(27) 99377-9912');
+
+-- ==========================================
+-- BLOCO 2: ENCARREGADO (12 linhas)
+-- ==========================================
+INSERT INTO encarregado (cod, nome, email, senha, telefone) VALUES
+(1,  'Rogério Campos',       'rogerio.campos@fortes.com',       'senha123', '(27) 98822-1101'),
+(2,  'Luiz Carvalho',        'luiz.carvalho@fortes.com',        'senha123', '(27) 98822-1102'),
+(3,  'Patrícia Moura',       'patricia.moura@fortes.com',       'senha123', '(27) 98822-2101'),
+(4,  'Henrique Ribeiro',     'henrique.ribeiro@fortes.com',     'senha123', '(27) 98822-2102'),
+(5,  'Maurício Farias',      'mauricio.farias@fortes.com',      'senha123', '(27) 98822-3101'),
+(6,  'Cláudia Rezende',      'claudia.rezende@fortes.com',      'senha123', '(27) 98822-3102'),
+(7,  'Ricardo Peixoto',      'ricardo.peixoto@fortes.com',      'senha123', '(27) 98822-4101'),
+(8,  'Daniela Vasconcelos',  'daniela.vasconcelos@fortes.com',  'senha123', '(27) 98822-4102'),
+(9,  'Sérgio Matos',         'sergio.matos@fortes.com',         'senha123', '(27) 98822-5101'),
+(10, 'Camila Siqueira',      'camila.siqueira@fortes.com',      'senha123', '(27) 98822-5102'),
+(11, 'Eduardo Brito',        'eduardo.brito@fortes.com',        'senha123', '(27) 98822-6101'),
+(12, 'Mariana Telles',       'mariana.telles@fortes.com',       'senha123', '(27) 98822-6102');
+
+-- ==========================================
+-- BLOCO 3: TECNICO (40 linhas, iguais à sua referência)
+-- ==========================================
+INSERT INTO tecnico (cod, nome, email, senha, telefone) VALUES
+(1,  'Lucas Almeida',      'lucas.almeida@fortes.com',      'senha123', '(27) 99111-1001'),
+(2,  'Gustavo Moreira',    'gustavo.moreira@fortes.com',    'senha123', '(27) 99111-1002'),
+(3,  'Felipe Carvalho',    'felipe.carvalho@fortes.com',    'senha123', '(27) 99111-1003'),
+(4,  'Matheus Prado',      'matheus.prado@fortes.com',      'senha123', '(27) 99111-1004'),
+(5,  'João Vilela',        'joao.vilela@fortes.com',        'senha123', '(27) 99111-1005'),
+(6,  'Pedro Martins',      'pedro.martins@fortes.com',      'senha123', '(27) 99111-1006'),
+(7,  'Thiago Lopes',       'thiago.lopes@fortes.com',       'senha123', '(27) 99111-1007'),
+(8,  'Rafael Torres',      'rafael.torres@fortes.com',      'senha123', '(27) 99111-1008'),
+(9,  'Leonardo Peixoto',   'leonardo.peixoto@fortes.com',   'senha123', '(27) 99111-1009'),
+(10, 'Renato Carvalho',    'renato.carvalho@fortes.com',    'senha123', '(27) 99111-1010'),
+(11, 'Maurício Silva',     'mauricio.silva@fortes.com',     'senha123', '(27) 99111-1011'),
+(12, 'Eduardo Trindade',   'eduardo.trindade@fortes.com',   'senha123', '(27) 99111-1012'),
+(13, 'Marcelo Cardoso',    'marcelo.cardoso@fortes.com',    'senha123', '(27) 99111-1013'),
+(14, 'Carlos Dias',        'carlos.dias@fortes.com',        'senha123', '(27) 99111-1014'),
+(15, 'André Monteiro',     'andre.monteiro@fortes.com',     'senha123', '(27) 99111-1015'),
+(16, 'Daniel Nogueira',    'daniel.nogueira@fortes.com',    'senha123', '(27) 99111-1016'),
+(17, 'Bruno Tavarez',      'bruno.tavarez@fortes.com',      'senha123', '(27) 99111-1017'),
+(18, 'Gabriel Farias',     'gabriel.farias@fortes.com',     'senha123', '(27) 99111-1018'),
+(19, 'Rodrigo Campos',     'rodrigo.campos@fortes.com',     'senha123', '(27) 99111-1019'),
+(20, 'Alexandre Luiz',     'alexandre.luiz@fortes.com',     'senha123', '(27) 99111-1020'),
+(21, 'Rafael Nascimento',  'rafael.nascimento@fortes.com',  'senha123', '(27) 99111-1021'),
+(22, 'Lucas Ferreira',     'lucas.ferreira@fortes.com',     'senha123', '(27) 99111-1022'),
+(23, 'Wesley Santos',      'wesley.santos@fortes.com',      'senha123', '(27) 99111-1023'),
+(24, 'Samuel Rocha',       'samuel.rocha@fortes.com',       'senha123', '(27) 99111-1024'),
+(25, 'Vinícius Magalhães', 'vinicius.magalhaes@fortes.com','senha123', '(27) 99111-1025'),
+(26, 'Fabrício Castro',    'fabricio.castro@fortes.com',    'senha123', '(27) 99111-1026'),
+(27, 'Renan Moretti',      'renan.moretti@fortes.com',      'senha123', '(27) 99111-1027'),
+(28, 'Diego Azevedo',      'diego.azevedo@fortes.com',      'senha123', '(27) 99111-1028'),
+(29, 'Caio Ribeiro',       'caio.ribeiro@fortes.com',       'senha123', '(27) 99111-1029'),
+(30, 'Fábio Corrêa',       'fabio.correa@fortes.com',       'senha123', '(27) 99111-1030'),
+(31, 'Hugo Fernandes',     'hugo.fernandes@fortes.com',     'senha123', '(27) 99111-1031'),
+(32, 'Anderson Melo',      'anderson.melo@fortes.com',      'senha123', '(27) 99111-1032'),
+(33, 'Eduardo Matos',      'eduardo.matos@fortes.com',      'senha123', '(27) 99111-1033'),
+(34, 'Fernando Duarte',    'fernando.duarte@fortes.com',    'senha123', '(27) 99111-1034'),
+(35, 'Paulo Henrique',     'paulo.henrique@fortes.com',     'senha123', '(27) 99111-1035'),
+(36, 'Ivan Rodrigues',     'ivan.rodrigues@fortes.com',     'senha123', '(27) 99111-1036'),
+(37, 'Adriano Silva',      'adriano.silva@fortes.com',      'senha123', '(27) 99111-1037'),
+(38, 'Marcos Vinícius',    'marcos.vinicius@fortes.com',    'senha123', '(27) 99111-1038'),
+(39, 'Douglas Pereira',    'douglas.pereira@fortes.com',    'senha123', '(27) 99111-1039'),
+(40, 'Leandro Rocha',      'leandro.rocha@fortes.com',      'senha123', '(27) 99111-1040');
+
+-- ==========================================
+-- BLOCO 4: INFO_OBRAS (15 linhas, sua referência)
+-- ==========================================
+INSERT INTO info_obras
+(cod, nome, total_horas_mes, valor_total_hora_extra, localizacao, total_tecnicos, cod_gestor)
+VALUES
+(1,  'Residencial Vila Verde',      120, 4800.00, 'Vila Velha - ES',  8, 1),
+(2,  'Edifício Horizonte',          95,  3950.00, 'Vitória - ES',     6, 1),
+(3,  'Condomínio Alto do Vale',     150, 6150.00, 'Serra - ES',       10, 2),
+(4,  'Shopping Leste',              210, 9200.00, 'Cariacica - ES',   12, 2),
+(5,  'Residencial Marina Park',     130, 5200.00, 'Vitória - ES',     7, 3),
+(6,  'Edifício Atlântico',          110, 4600.00, 'Vila Velha - ES',  8, 3),
+(7,  'Porto Central Complex',       280, 13700.00,'Serra - ES',       12, 4),
+(8,  'Condomínio Ilha do Sol',      140, 5800.00, 'Vitória - ES',     9, 4),
+(9,  'Residencial Mirador',         100, 4020.00, 'Vila Velha - ES',  5, 5),
+(10, 'Centro Empresarial Norte',    185, 7400.00, 'Serra - ES',       11,5),
+(11, 'Vila do Campo',               90,  3600.00, 'Cariacica - ES',   5, 1),
+(12, 'Solar das Dunas',             160, 6700.00, 'Guarapari - ES',   9, 2),
+(13, 'Morada da Serra',             145, 5900.00, 'Serra - ES',       8, 3),
+(14, 'Residencial Vale Azul',       135, 5400.00, 'Vitória - ES',     7, 4),
+(15, 'Praia Tower',                 175, 7800.00, 'Vila Velha - ES', 10, 5);
+
+-- ======================================================
+-- A partir daqui: dados MASSIVOS gerados com generate_series
+-- ======================================================
+
+-- ==========================================
+-- BLOCO 5: INFO_TECNICOS (400 linhas)
+-- ==========================================
+WITH base AS (
+  SELECT 
+    g AS cod,
+    ((g-1) % 40) + 1      AS cod_tec,
+    80 + ((g-1) % 121)    AS total_horas_mes,
+    (20 + ((g-1) % 16))::numeric(10,2) AS valor_hora
+  FROM generate_series(1, 400) g
+)
+INSERT INTO info_tecnicos (cod, nome, total_horas_mes, valor_total_hora_extra, cod_encarregado, cod_gestor)
+SELECT
+  b.cod,
+  t.nome,
+  b.total_horas_mes,
+  (b.total_horas_mes * b.valor_hora)::numeric(10,2) AS valor_total_hora_extra,
+  ((b.cod-1) % 12) + 1 AS cod_encarregado,
+  ((b.cod-1) % 6)  + 1 AS cod_gestor
+FROM base b
+JOIN tecnico t ON t.cod = b.cod_tec;
+
+-- ==========================================
+-- BLOCO 6: INFO_HORAS_EXTRAS_TEC (1600 linhas)
+-- (Usa o nome do técnico e o nome do encarregado reais)
+-- ==========================================
+WITH params AS (
+  SELECT
+    ARRAY[
+      'Residencial Vila Verde','Edifício Horizonte','Condomínio Alto do Vale',
+      'Shopping Leste','Residencial Marina Park','Edifício Atlântico',
+      'Porto Central Complex','Condomínio Ilha do Sol','Residencial Mirador',
+      'Centro Empresarial Norte','Vila do Campo','Solar das Dunas',
+      'Morada da Serra','Residencial Vale Azul','Praia Tower'
+    ] AS obras,
+    ARRAY[
+      '06:00-10:00','07:00-11:00','08:00-12:00',
+      '13:00-17:00','14:00-18:00'
+    ] AS intervalos,
+    ARRAY[
+      'Manutenção preventiva',
+      'Reparo emergencial',
+      'Ajuste em quadro elétrico',
+      'Instalação de novos pontos',
+      'Verificação de falha',
+      'Troca de cabos danificados',
+      'Avaliação de sistema'
+    ] AS comentarios
+)
+INSERT INTO info_horas_extras_tec
+(cod, nome, obra, comentarios, valor, duracao_intervalo, encarregado, data_marcada, status, cod_tecnico)
+SELECT
+  g AS cod,
+  t.nome AS nome,
+  p.obras[ ((g-1) % array_length(p.obras,1)) + 1 ] AS obra,
+  p.comentarios[ ((g-1) % array_length(p.comentarios,1)) + 1 ] AS comentarios,
+  (28 + ((g-1) % 18))::numeric(10,2) AS valor,
+  p.intervalos[ ((g-1) % array_length(p.intervalos,1)) + 1 ] AS duracao_intervalo,
+  e.nome AS encarregado,
+  DATE '2024-01-01' + ((g-1) % 365) AS data_marcada,
+  CASE ((g-1) % 3)
+    WHEN 0 THEN 'A'
+    WHEN 1 THEN 'P'
+    ELSE 'R'
+  END AS status,
+  t.cod AS cod_tecnico
+FROM generate_series(1, 1600) g
+CROSS JOIN params p
+JOIN tecnico     t ON t.cod = ((g-1) % 40) + 1
+JOIN encarregado e ON e.cod = ((g-1) % 12) + 1;
+
+-- ==========================================
+-- BLOCO 7: TAB_STATUS (700 linhas)
+-- ==========================================
+WITH params_status AS (
+  SELECT
+    ARRAY[
+      'Residencial Vila Verde','Edifício Horizonte','Condomínio Alto do Vale',
+      'Shopping Leste','Residencial Marina Park','Edifício Atlântico',
+      'Porto Central Complex','Condomínio Ilha do Sol','Residencial Mirador',
+      'Centro Empresarial Norte','Vila do Campo','Solar das Dunas',
+      'Morada da Serra','Residencial Vale Azul','Praia Tower'
+    ] AS obras,
+    ARRAY[
+      '06:00-10:00','07:00-11:00','08:00-12:00',
+      '13:00-17:00','14:00-18:00'
+    ] AS intervalos
+)
+INSERT INTO tab_status
+(cod, data_envio, duracao_intervalo, tecnico, obra, status, total_aprovados, total_em_analise, total_recusados, cod_encarregado)
+SELECT
+  g AS cod,
+  DATE '2024-01-01' + ((g-1) % 365) AS data_envio,
+  p.intervalos[ ((g-1) % array_length(p.intervalos,1)) + 1 ] AS duracao_intervalo,
+  t.nome AS tecnico,
+  p.obras[ ((g-1) % array_length(p.obras,1)) + 1 ] AS obra,
+  CASE ((g-1) % 3)
+    WHEN 0 THEN 'A'
+    WHEN 1 THEN 'P'
+    ELSE 'R'
+  END AS status,
+  10 + ((g-1) % 8) AS total_aprovados,
+  2  + ((g-1) % 4) AS total_em_analise,
+  ((g-1) % 3)      AS total_recusados,
+  ((g-1) % 12) + 1 AS cod_encarregado
+FROM generate_series(1, 700) g
+CROSS JOIN params_status p
+JOIN tecnico t ON t.cod = ((g-1) % 40) + 1;
+
+-- ==========================================
+-- BLOCO 8: SOLICITADAS_GESTOR (700 linhas) - AJUSTADO
+-- ==========================================
+
+INSERT INTO solicitadas_gestor
+(cod, data_solicitacao, data_hora_extra, duracao_intervalo, valor_hora_extra,
+ tecnico, obra, status, encarregado, comentario, justificativa, cod_gestor)
+SELECT
+  g AS cod,
+  DATE '2023-12-15' + ((g-1) % 365) AS data_solicitacao,
+  DATE '2023-12-17' + ((g-1) % 365) AS data_hora_extra,
+
+  -- intervalo de horas
+  (ARRAY[
+    '06:00-10:00','07:00-11:00','08:00-12:00',
+    '13:00-17:00','14:00-18:00'
+  ])[ ((g-1) % 5) + 1 ]                         AS duracao_intervalo,
+
+  -- valor da hora (28 a 45)
+  (28 + ((g-1) % 18))::numeric(10,2)            AS valor_hora_extra,
+
+  -- técnico (40 em ciclo)
+  t.nome                                        AS tecnico,
+
+  -- obra (15 em ciclo)
+  (ARRAY[
+    'Residencial Vila Verde','Edifício Horizonte','Condomínio Alto do Vale',
+    'Shopping Leste','Residencial Marina Park','Edifício Atlântico',
+    'Porto Central Complex','Condomínio Ilha do Sol','Residencial Mirador',
+    'Centro Empresarial Norte','Vila do Campo','Solar das Dunas',
+    'Morada da Serra','Residencial Vale Azul','Praia Tower'
+  ])[ ((g-1) % 15) + 1 ]                        AS obra,
+
+  -- STATUS: 60% A, 20% P, 20% R
+  -- baseado no técnico (40 não é múltiplo de 3 nem de 5),
+  -- então todos os encarregados acabam tendo A, P e R misturados
+  CASE ((t.cod - 1) % 5)
+    WHEN 0 THEN 'A'
+    WHEN 1 THEN 'A'
+    WHEN 2 THEN 'A'
+    WHEN 3 THEN 'P'
+    ELSE       'R'
+  END                                           AS status,
+
+  -- encarregado (12 em ciclo)
+  e.nome                                        AS encarregado,
+
+  -- comentário
+  (ARRAY[
+    'Ajuste emergencial',
+    'Quadro oscilando',
+    'Manutenção preventiva',
+    'Verificação estrutural',
+    'Instalação adicional',
+    'Reparo crítico',
+    'Revisão geral'
+  ])[ ((g-1) % 7) + 1 ]                         AS comentario,
+
+  -- justificativa: às vezes NULL, às vezes uma frase
+  CASE ((g-1) % 4)
+    WHEN 0 THEN NULL
+    ELSE
+      (ARRAY[
+        'Sem observações',
+        'Aguardando avaliação',
+        'Material em análise',
+        'Necessário acompanhamento',
+        'Revisão programada'
+      ])[ ((g-1) % 5) + 1 ]
+  END                                           AS justificativa,
+
+  -- gestor entre 1 e 6
+  ((g-1) % 6) + 1                               AS cod_gestor
+
+FROM generate_series(1, 700) g
+JOIN tecnico     t ON t.cod = ((g-1) % 40) + 1
+JOIN encarregado e ON e.cod = ((g-1) % 12) + 1;
+
+-- ==========================================
+-- BLOCO 10: HISTORICO_GESTOR (700 linhas)
+-- ==========================================
+WITH params_hist_ges AS (
+  SELECT
+    ARRAY[
+      'Residencial Vila Verde','Edifício Horizonte','Condomínio Alto do Vale',
+      'Shopping Leste','Residencial Marina Park','Edifício Atlântico',
+      'Porto Central Complex','Condomínio Ilha do Sol','Residencial Mirador',
+      'Centro Empresarial Norte','Vila do Campo','Solar das Dunas',
+      'Morada da Serra','Residencial Vale Azul','Praia Tower'
+    ] AS obras,
+    ARRAY[
+      '06:00-10:00','07:00-11:00','08:00-12:00',
+      '13:00-17:00','14:00-18:00'
+    ] AS intervalos,
+    ARRAY[
+      'Ajuste solicitado',
+      'Quadro revisado',
+      'Procedimento simples',
+      'Reparo concluído',
+      'Sistema estável'
+    ] AS comentarios,
+    ARRAY[
+      'Execução inadequada',
+      'Material insuficiente',
+      'Falha grave detectada',
+      'Mau uso do equipamento'
+    ] AS justificativas_recusa
+)
+INSERT INTO historico_gestor
+(cod, data_solicitacao, data_hora_extra, duracao_intervalo, valor_hora_extra,
+ tecnico, obra, status, encarregado, comentario, justificativa, cod_gestor)
+SELECT
+    g AS cod,
+    DATE '2024-01-01' + ((g - 1) % 365)                  AS data_solicitacao,
+    DATE '2024-01-02' + ((g - 1) % 365)                  AS data_hora_extra,
+    LPAD(((6 + (g % 7))::text), 2, '0') || ':00-' ||
+    LPAD(((10 + (g % 7))::text), 2, '0') || ':00'        AS duracao_intervalo,
+    -- valor entre 25 e 50 com duas casas
+    ROUND( (25 + ((g - 1) % 26))::numeric, 2 )           AS valor_hora_extra,
+    -- mesmo conjunto de técnicos
+    (ARRAY[
+        'Lucas Almeida','Gustavo Moreira','Felipe Carvalho','Matheus Prado',
+        'João Vilela','Pedro Martins','Thiago Lopes','Rafael Torres',
+        'Leonardo Peixoto','Renato Carvalho','Maurício Silva','Eduardo Trindade',
+        'Marcelo Cardoso','Carlos Dias','André Monteiro','Daniel Nogueira',
+        'Bruno Tavarez','Gabriel Farias','Rodrigo Campos','Alexandre Luiz',
+        'Rafael Nascimento','Lucas Ferreira','Wesley Santos','Samuel Rocha',
+        'Vinícius Magalhães','Fabrício Castro','Renan Moretti','Diego Azevedo',
+        'Caio Ribeiro','Fábio Corrêa','Hugo Fernandes','Anderson Melo',
+        'Eduardo Matos','Fernando Duarte','Paulo Henrique','Ivan Rodrigues',
+        'Adriano Silva','Marcos Vinícius','Douglas Pereira','Leandro Rocha'
+    ])[((g - 1) % 40) + 1]                              AS tecnico,
+    -- obras
+    (ARRAY[
+        'Residencial Vila Verde','Edifício Horizonte','Condomínio Alto do Vale',
+        'Shopping Leste','Residencial Marina Park','Edifício Atlântico',
+        'Porto Central Complex','Condomínio Ilha do Sol','Residencial Mirador',
+        'Centro Empresarial Norte','Vila do Campo','Solar das Dunas',
+        'Morada da Serra','Residencial Vale Azul','Praia Tower'
+    ])[((g - 1) % 15) + 1]                              AS obra,
+    -- status A / P / R
+    (ARRAY['A','P','R'])[((g - 1) % 3) + 1]             AS status,
+    -- encarregado (nome, não o código — seguindo seu DDL)
+    (ARRAY[
+        'Rogério Campos','Luiz Carvalho','Patrícia Moura','Henrique Ribeiro',
+        'Maurício Farias','Cláudia Rezende','Ricardo Peixoto','Daniela Vasconcelos',
+        'Sérgio Matos','Camila Siqueira','Eduardo Brito','Mariana Telles'
+    ])[((g - 1) % 12) + 1]                              AS encarregado,
+    -- comentário
+    'Registro automático ' || g::text                   AS comentario,
+    -- justificativa só quando for recusado (R)
+    CASE
+        WHEN (ARRAY['A','P','R'])[((g - 1) % 3) + 1] = 'R' THEN
+            (ARRAY[
+                'Execução inadequada',
+                'Material insuficiente',
+                'Falha operacional',
+                'Prazo expirado',
+                'Requisição incompleta'
+            ])[((g - 1) % 5) + 1]
+        ELSE NULL
+    END                                                 AS justificativa,
+    -- gestor entre 1 e 6
+    ((g - 1) % 6) + 1                                   AS cod_gestor
+FROM generate_series(1, 5000) AS g;
+
+-- ==========================================
+-- BLOCO 11: CUMPRIDAS_GESTOR (127 linhas)
+-- ==========================================
+WITH params_cumpridas AS (
+  SELECT
+    ARRAY[
+      'Residencial Vila Verde','Edifício Horizonte','Condomínio Alto do Vale',
+      'Shopping Leste','Residencial Marina Park','Edifício Atlântico',
+      'Porto Central Complex','Condomínio Ilha do Sol','Residencial Mirador',
+      'Centro Empresarial Norte','Vila do Campo','Solar das Dunas',
+      'Morada da Serra','Residencial Vale Azul','Praia Tower'
+    ] AS obras,
+    ARRAY[
+      '06:00-10:00','07:00-11:00','08:00-12:00',
+      '13:00-17:00','14:00-18:00'
+    ] AS intervalos,
+    ARRAY[
+      'Serviço concluído com sucesso',
+      'Serviço dentro do padrão',
+      'Trabalho aprovado',
+      'Serviço excelente',
+      'Atendimento finalizado'
+    ] AS comentarios,
+    ARRAY[
+      'Falha operacional',
+      'Material insuficiente',
+      'Falha não solucionada'
+    ] AS justificativas_recusa
+)
+INSERT INTO cumpridas_gestor
+(cod, data_solicitacao, data_hora_extra, duracao_intervalo, valor_hora_extra,
+ tecnico, obra, status, encarregado, comentario, justificativa, cod_gestor)
+SELECT
+  g AS cod,
+  DATE '2023-12-10' + ((g-1) % 365) AS data_solicitacao,
+  DATE '2023-12-12' + ((g-1) % 365) AS data_hora_extra,
+  p.intervalos[ ((g-1) % array_length(p.intervalos,1)) + 1 ] AS duracao_intervalo,
+  (28 + ((g-1) % 18))::numeric(10,2) AS valor_hora_extra,
+  t.nome AS tecnico,
+  p.obras[ ((g-1) % array_length(p.obras,1)) + 1 ] AS obra,
+  CASE ((g-1) % 3)
+    WHEN 0 THEN 'A'
+    WHEN 1 THEN 'A'
+    ELSE 'R'
+  END AS status,
+  e.nome AS encarregado,
+  p.comentarios[ ((g-1) % array_length(p.comentarios,1)) + 1 ] AS comentario,
+  CASE 
+    WHEN ((g-1) % 3) = 2 THEN
+      p.justificativas_recusa[ ((g-1) % array_length(p.justificativas_recusa,1)) + 1 ]
+    ELSE NULL
+  END AS justificativa,
+  ((g-1) % 6) + 1 AS cod_gestor
+FROM generate_series(1, 127) g
+CROSS JOIN params_cumpridas p
+JOIN tecnico     t ON t.cod = ((g-1) % 40) + 1
+JOIN encarregado e ON e.cod = ((g-1) % 12) + 1;
+
+

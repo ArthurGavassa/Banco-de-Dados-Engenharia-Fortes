@@ -1,0 +1,151 @@
+CREATE TABLE tecnico (
+	cod INT,
+    nome VARCHAR,
+    email VARCHAR,
+    senha VARCHAR,
+    telefone VARCHAR,
+    CONSTRAINT pk_tecnico PRIMARY KEY(cod)
+);
+
+CREATE TABLE encarregado (
+	cod INT,
+    nome VARCHAR,
+    email VARCHAR,
+    senha VARCHAR,
+    telefone VARCHAR,
+    CONSTRAINT pk_encarregado PRIMARY KEY(cod)
+);
+
+CREATE TABLE gestor (
+	cod INT,
+    nome VARCHAR,
+    email VARCHAR,
+    senha VARCHAR,
+    telefone VARCHAR,
+    CONSTRAINT pk_gestor PRIMARY KEY(cod)
+);
+
+CREATE TABLE info_horas_extras_tec (
+  	cod INT,
+    nome VARCHAR,
+	obra VARCHAR,
+  	comentarios TEXT,
+  	valor DECIMAL(10,2),
+  	duracao_intervalo VARCHAR,
+  	encarregado VARCHAR,
+  	data_marcada DATE,
+  	status CHAR,
+  	cod_tecnico INT,
+  	CONSTRAINT pk_info_horas_extras_tec PRIMARY KEY(cod),
+  	CONSTRAINT fk_tecnico FOREIGN KEY(cod_tecnico) REFERENCES tecnico(cod)
+);
+
+CREATE TABLE info_tecnicos (
+  	cod INT,
+	nome VARCHAR,
+  	total_horas_mes INT,
+  	valor_total_hora_extra DECIMAL(10,2),
+  	cod_encarregado INT,
+  	cod_gestor INT,
+  	CONSTRAINT pk_info_tecnicos PRIMARY KEY(cod),
+  	CONSTRAINT fk_encarregado FOREIGN KEY(cod_encarregado) REFERENCES encarregado(cod),
+  	CONSTRAINT fk_gestor FOREIGN KEY(cod_gestor) REFERENCES gestor(cod)
+);
+
+CREATE TABLE tab_status (
+  	cod INT,
+	data_envio DATE,
+  	duracao_intervalo VARCHAR,
+  	tecnico VARCHAR,
+  	obra VARCHAR,
+  	status CHAR,
+  	total_aprovados INT,
+  	total_em_analise INT,
+  	total_recusados INT,
+  	cod_encarregado INT,
+  	CONSTRAINT pk_tab_status PRIMARY KEY(cod),
+  	CONSTRAINT fk_encarregado FOREIGN KEY(cod_encarregado) REFERENCES encarregado(cod)
+);
+
+CREATE TABLE historico_encarregado (
+  	cod INT,
+	data_envio DATE,
+  	data_resposta DATE,
+  	duracao_intervalo VARCHAR,
+  	tecnico VARCHAR,
+  	obra VARCHAR,
+  	status CHAR,
+  	total_aprovados INT,
+  	total_recusados INT,
+  	justificativa TEXT,
+  	cod_encarregado INT,
+  	CONSTRAINT pk_historico_encarregado PRIMARY KEY(cod),
+  	CONSTRAINT fk_encarregado FOREIGN KEY(cod_encarregado) REFERENCES encarregado(cod)
+);
+
+CREATE TABLE solicitadas_gestor (
+  	cod INT,
+	data_solicitacao DATE,
+  	data_hora_extra DATE,
+  	duracao_intervalo VARCHAR,
+  	valor_hora_extra DECIMAL(10,2),
+  	tecnico VARCHAR,
+  	obra VARCHAR,
+  	status CHAR,
+  	encarregado VARCHAR,
+  	comentario TEXT,
+  	justificativa TEXT,
+  	cod_gestor INT,
+  	CONSTRAINT pk_solicidadas_gestor PRIMARY KEY(cod),
+  	CONSTRAINT fk_gestor FOREIGN KEY(cod_gestor) REFERENCES gestor(cod)
+);
+
+CREATE TABLE historico_gestor (
+  	cod INT,
+	data_solicitacao DATE,
+  	data_hora_extra DATE,
+  	duracao_intervalo VARCHAR,
+  	valor_hora_extra DECIMAL(10,2),
+  	tecnico VARCHAR,
+  	obra VARCHAR,
+  	status CHAR,
+  	encarregado VARCHAR,
+  	comentario TEXT,
+  	justificativa TEXT,
+  	cod_gestor INT,
+  	CONSTRAINT pk_historico_gestor PRIMARY KEY(cod),
+  	CONSTRAINT fk_gestor FOREIGN KEY(cod_gestor) REFERENCES gestor(cod)
+);
+
+CREATE TABLE cumpridas_gestor (
+  	cod INT,
+	data_solicitacao DATE,
+  	data_hora_extra DATE,
+  	duracao_intervalo VARCHAR,
+  	valor_hora_extra DECIMAL(10,2),
+  	tecnico VARCHAR,
+  	obra VARCHAR,
+  	status CHAR,
+  	encarregado VARCHAR,
+  	comentario TEXT,
+  	justificativa TEXT,
+  	cod_gestor INT,
+  	CONSTRAINT pk_cumpridas_gestor PRIMARY KEY(cod),
+  	CONSTRAINT fk_gestor FOREIGN KEY(cod_gestor) REFERENCES gestor(cod)
+);
+
+CREATE TABLE info_obras (
+  	cod INT,
+	nome VARCHAR,
+  	total_horas_mes INT,
+  	valor_total_hora_extra DECIMAL(10,2),
+  	localizacao VARCHAR,
+  	total_tecnicos INT,
+  	cod_gestor INT,
+  	CONSTRAINT pk_info_obras PRIMARY KEY(cod),
+  	CONSTRAINT fk_gestor FOREIGN KEY(cod_gestor) REFERENCES gestor(cod)
+);
+
+
+
+
