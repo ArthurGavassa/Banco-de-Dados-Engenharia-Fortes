@@ -1,33 +1,33 @@
 CREATE TABLE tecnico (
 	cod INT,
-    nome VARCHAR,
-    email VARCHAR,
-    senha VARCHAR,
-    telefone VARCHAR,
-    CONSTRAINT pk_tecnico PRIMARY KEY(cod)
+    	nome VARCHAR,
+    	email VARCHAR,
+    	senha VARCHAR,
+    	telefone VARCHAR,
+    	CONSTRAINT pk_tecnico PRIMARY KEY(cod)
 );
 
 CREATE TABLE encarregado (
-	cod INT,
-    nome VARCHAR,
-    email VARCHAR,
-    senha VARCHAR,
-    telefone VARCHAR,
-    CONSTRAINT pk_encarregado PRIMARY KEY(cod)
+    	cod INT,
+    	nome VARCHAR,
+    	email VARCHAR,
+    	senha VARCHAR,
+    	telefone VARCHAR,
+    	CONSTRAINT pk_encarregado PRIMARY KEY(cod)
 );
 
 CREATE TABLE gestor (
-	cod INT,
-    nome VARCHAR,
-    email VARCHAR,
-    senha VARCHAR,
-    telefone VARCHAR,
-    CONSTRAINT pk_gestor PRIMARY KEY(cod)
+    	cod INT,
+    	nome VARCHAR,
+    	email VARCHAR,
+   	senha VARCHAR,
+   	telefone VARCHAR,
+    	CONSTRAINT pk_gestor PRIMARY KEY(cod)
 );
 
 CREATE TABLE info_horas_extras_tec (
   	cod INT,
-    nome VARCHAR,
+        nome VARCHAR,
 	obra VARCHAR,
   	comentarios TEXT,
   	valor DECIMAL(10,2),
