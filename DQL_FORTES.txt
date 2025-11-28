@@ -1,0 +1,32 @@
+-- ==========================================
+-- PRIMEIRO SELECT_DQL
+-- ==========================================
+
+SELECT
+    t.cod,
+    t.nome,
+    COUNT(*) AS qtd_horas_extras_aprovadas
+FROM tecnico t
+JOIN info_horas_extras_tec ih 
+    ON ih.cod_tecnico = t.cod
+WHERE 
+    ih.status = 'A'
+GROUP BY 
+    t.cod,
+    t.nome
+ORDER BY 
+    qtd_horas_extras_aprovadas DESC;
+
+-- ==========================================
+-- SEGUNDO SELECT_DQL
+-- ==========================================
+
+SELECT 
+    e.nome AS encarregado,
+    COUNT(sg.*) AS qtd_solicitacoes_aprovadas
+FROM encarregado e
+LEFT JOIN solicitadas_gestor sg
+    ON sg.encarregado = e.nome
+   AND sg.status = 'A'  
+GROUP BY e.nome
+ORDER BY qtd_solicitacoes_aprovadas DESC;
