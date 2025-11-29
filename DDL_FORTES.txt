@@ -83,55 +83,22 @@ CREATE TABLE historico_encarregado (
   	CONSTRAINT fk_encarregado FOREIGN KEY(cod_encarregado) REFERENCES encarregado(cod)
 );
 
-CREATE TABLE solicitadas_gestor (
-  	cod INT,
-	data_solicitacao DATE,
-  	data_hora_extra DATE,
-  	duracao_intervalo VARCHAR,
-  	valor_hora_extra DECIMAL(10,2),
-  	tecnico VARCHAR,
-  	obra VARCHAR,
-  	status CHAR,
-  	encarregado VARCHAR,
-  	comentario TEXT,
-  	justificativa TEXT,
-  	cod_gestor INT,
-  	CONSTRAINT pk_solicidadas_gestor PRIMARY KEY(cod),
-  	CONSTRAINT fk_gestor FOREIGN KEY(cod_gestor) REFERENCES gestor(cod)
-);
-
-CREATE TABLE historico_gestor (
-  	cod INT,
-	data_solicitacao DATE,
-  	data_hora_extra DATE,
-  	duracao_intervalo VARCHAR,
-  	valor_hora_extra DECIMAL(10,2),
-  	tecnico VARCHAR,
-  	obra VARCHAR,
-  	status CHAR,
-  	encarregado VARCHAR,
-  	comentario TEXT,
-  	justificativa TEXT,
-  	cod_gestor INT,
-  	CONSTRAINT pk_historico_gestor PRIMARY KEY(cod),
-  	CONSTRAINT fk_gestor FOREIGN KEY(cod_gestor) REFERENCES gestor(cod)
-);
-
-CREATE TABLE cumpridas_gestor (
-  	cod INT,
-	data_solicitacao DATE,
-  	data_hora_extra DATE,
-  	duracao_intervalo VARCHAR,
-  	valor_hora_extra DECIMAL(10,2),
-  	tecnico VARCHAR,
-  	obra VARCHAR,
-  	status CHAR,
-  	encarregado VARCHAR,
-  	comentario TEXT,
-  	justificativa TEXT,
-  	cod_gestor INT,
-  	CONSTRAINT pk_cumpridas_gestor PRIMARY KEY(cod),
-  	CONSTRAINT fk_gestor FOREIGN KEY(cod_gestor) REFERENCES gestor(cod)
+CREATE TABLE horas_gestor (
+   	cod INT,
+   	data_solicitacao DATE,
+   	data_hora_extra DATE,
+   	duracao_intervalo VARCHAR,
+   	valor_hora_extra DECIMAL(10,2),
+   	tecnico VARCHAR,
+   	obra VARCHAR,
+   	status CHAR,
+   	encarregado VARCHAR,
+   	comentario TEXT,
+   	justificativa TEXT,
+   	cod_gestor INT,
+   	tipo_registro CHAR(1),  -- 'S' = solicitada, 'H' = histórico, 'C' = cumprida
+   	CONSTRAINT pk_horas_gestor PRIMARY KEY (cod, tipo_registro),
+   	CONSTRAINT fk_horas_gestor_gestor FOREIGN KEY (cod_gestor) REFERENCES gestor(cod)
 );
 
 CREATE TABLE info_obras (
@@ -145,6 +112,7 @@ CREATE TABLE info_obras (
   	CONSTRAINT pk_info_obras PRIMARY KEY(cod),
   	CONSTRAINT fk_gestor FOREIGN KEY(cod_gestor) REFERENCES gestor(cod)
 );
+
 
 
 

@@ -1,6 +1,4 @@
--- ==========================================
--- PRIMEIRO SELECT_DQL
--- ==========================================
+--PRIMEIRO SELECT: Quantidade de horas extras aprovadas para cada funcionário.
 
 SELECT
     t.cod,
@@ -17,16 +15,18 @@ GROUP BY
 ORDER BY 
     qtd_horas_extras_aprovadas DESC;
 
--- ==========================================
--- SEGUNDO SELECT_DQL
--- ==========================================
+
+--SEGUNDO SELECT: Quantas solicitações de cada encarregado foram aprovadas.
 
 SELECT 
     e.nome AS encarregado,
-    COUNT(sg.*) AS qtd_solicitacoes_aprovadas
+    COUNT(hg.*) AS qtd_solicitacoes_aprovadas
 FROM encarregado e
-LEFT JOIN solicitadas_gestor sg
-    ON sg.encarregado = e.nome
-   AND sg.status = 'A'  
-GROUP BY e.nome
-ORDER BY qtd_solicitacoes_aprovadas DESC;
+LEFT JOIN horas_gestor hg
+    ON hg.encarregado = e.nome        
+   AND hg.status = 'A'                
+   AND hg.tipo_registro = 'S'        
+GROUP BY 
+    e.nome
+ORDER BY 
+    qtd_solicitacoes_aprovadas DESC;

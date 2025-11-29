@@ -27,7 +27,7 @@ INSERT INTO encarregado (cod, nome, email, senha, telefone) VALUES
 (12, 'Mariana Telles',       'mariana.telles@fortes.com',       'senha123', '(27) 98822-6102');
 
 -- ==========================================
--- BLOCO 3: TECNICO (40 linhas, iguais à sua referência)
+-- BLOCO 3: TECNICO (40 linhas)
 -- ==========================================
 INSERT INTO tecnico (cod, nome, email, senha, telefone) VALUES
 (1,  'Lucas Almeida',      'lucas.almeida@fortes.com',      'senha123', '(27) 99111-1001'),
@@ -72,7 +72,7 @@ INSERT INTO tecnico (cod, nome, email, senha, telefone) VALUES
 (40, 'Leandro Rocha',      'leandro.rocha@fortes.com',      'senha123', '(27) 99111-1040');
 
 -- ==========================================
--- BLOCO 4: INFO_OBRAS (15 linhas, sua referência)
+-- BLOCO 4: INFO_OBRAS (15 linhas)
 -- ==========================================
 INSERT INTO info_obras
 (cod, nome, total_horas_mes, valor_total_hora_extra, localizacao, total_tecnicos, cod_gestor)
@@ -121,7 +121,6 @@ JOIN tecnico t ON t.cod = b.cod_tec;
 
 -- ==========================================
 -- BLOCO 6: INFO_HORAS_EXTRAS_TEC (1600 linhas)
--- (Usa o nome do técnico e o nome do encarregado reais)
 -- ==========================================
 WITH params AS (
   SELECT
@@ -207,30 +206,21 @@ CROSS JOIN params_status p
 JOIN tecnico t ON t.cod = ((g-1) % 40) + 1;
 
 -- ==========================================
--- BLOCO 8: SOLICITADAS_GESTOR (700 linhas) - AJUSTADO
+-- BLOCO 8: horas_gestor - REGISTROS TIPO 'S' (SOLICITADAS) - 700
 -- ==========================================
-
-INSERT INTO solicitadas_gestor
+INSERT INTO horas_gestor
 (cod, data_solicitacao, data_hora_extra, duracao_intervalo, valor_hora_extra,
- tecnico, obra, status, encarregado, comentario, justificativa, cod_gestor)
+ tecnico, obra, status, encarregado, comentario, justificativa, cod_gestor, tipo_registro)
 SELECT
   g AS cod,
   DATE '2023-12-15' + ((g-1) % 365) AS data_solicitacao,
   DATE '2023-12-17' + ((g-1) % 365) AS data_hora_extra,
-
-  -- intervalo de horas
   (ARRAY[
     '06:00-10:00','07:00-11:00','08:00-12:00',
     '13:00-17:00','14:00-18:00'
   ])[ ((g-1) % 5) + 1 ]                         AS duracao_intervalo,
-
-  -- valor da hora (28 a 45)
   (28 + ((g-1) % 18))::numeric(10,2)            AS valor_hora_extra,
-
-  -- técnico (40 em ciclo)
   t.nome                                        AS tecnico,
-
-  -- obra (15 em ciclo)
   (ARRAY[
     'Residencial Vila Verde','Edifício Horizonte','Condomínio Alto do Vale',
     'Shopping Leste','Residencial Marina Park','Edifício Atlântico',
@@ -238,10 +228,6 @@ SELECT
     'Centro Empresarial Norte','Vila do Campo','Solar das Dunas',
     'Morada da Serra','Residencial Vale Azul','Praia Tower'
   ])[ ((g-1) % 15) + 1 ]                        AS obra,
-
-  -- STATUS: 60% A, 20% P, 20% R
-  -- baseado no técnico (40 não é múltiplo de 3 nem de 5),
-  -- então todos os encarregados acabam tendo A, P e R misturados
   CASE ((t.cod - 1) % 5)
     WHEN 0 THEN 'A'
     WHEN 1 THEN 'A'
@@ -249,11 +235,7 @@ SELECT
     WHEN 3 THEN 'P'
     ELSE       'R'
   END                                           AS status,
-
-  -- encarregado (12 em ciclo)
   e.nome                                        AS encarregado,
-
-  -- comentário
   (ARRAY[
     'Ajuste emergencial',
     'Quadro oscilando',
@@ -263,8 +245,6 @@ SELECT
     'Reparo crítico',
     'Revisão geral'
   ])[ ((g-1) % 7) + 1 ]                         AS comentario,
-
-  -- justificativa: às vezes NULL, às vezes uma frase
   CASE ((g-1) % 4)
     WHEN 0 THEN NULL
     ELSE
@@ -276,56 +256,25 @@ SELECT
         'Revisão programada'
       ])[ ((g-1) % 5) + 1 ]
   END                                           AS justificativa,
-
-  -- gestor entre 1 e 6
-  ((g-1) % 6) + 1                               AS cod_gestor
-
+  ((g-1) % 6) + 1                               AS cod_gestor,
+  'S'                                           AS tipo_registro
 FROM generate_series(1, 700) g
 JOIN tecnico     t ON t.cod = ((g-1) % 40) + 1
 JOIN encarregado e ON e.cod = ((g-1) % 12) + 1;
 
 -- ==========================================
--- BLOCO 10: HISTORICO_GESTOR (700 linhas)
+-- BLOCO 9: horas_gestor - REGISTROS TIPO 'H' (HISTÓRICO) - 5000
 -- ==========================================
-WITH params_hist_ges AS (
-  SELECT
-    ARRAY[
-      'Residencial Vila Verde','Edifício Horizonte','Condomínio Alto do Vale',
-      'Shopping Leste','Residencial Marina Park','Edifício Atlântico',
-      'Porto Central Complex','Condomínio Ilha do Sol','Residencial Mirador',
-      'Centro Empresarial Norte','Vila do Campo','Solar das Dunas',
-      'Morada da Serra','Residencial Vale Azul','Praia Tower'
-    ] AS obras,
-    ARRAY[
-      '06:00-10:00','07:00-11:00','08:00-12:00',
-      '13:00-17:00','14:00-18:00'
-    ] AS intervalos,
-    ARRAY[
-      'Ajuste solicitado',
-      'Quadro revisado',
-      'Procedimento simples',
-      'Reparo concluído',
-      'Sistema estável'
-    ] AS comentarios,
-    ARRAY[
-      'Execução inadequada',
-      'Material insuficiente',
-      'Falha grave detectada',
-      'Mau uso do equipamento'
-    ] AS justificativas_recusa
-)
-INSERT INTO historico_gestor
+INSERT INTO horas_gestor
 (cod, data_solicitacao, data_hora_extra, duracao_intervalo, valor_hora_extra,
- tecnico, obra, status, encarregado, comentario, justificativa, cod_gestor)
+ tecnico, obra, status, encarregado, comentario, justificativa, cod_gestor, tipo_registro)
 SELECT
     g AS cod,
     DATE '2024-01-01' + ((g - 1) % 365)                  AS data_solicitacao,
     DATE '2024-01-02' + ((g - 1) % 365)                  AS data_hora_extra,
     LPAD(((6 + (g % 7))::text), 2, '0') || ':00-' ||
     LPAD(((10 + (g % 7))::text), 2, '0') || ':00'        AS duracao_intervalo,
-    -- valor entre 25 e 50 com duas casas
     ROUND( (25 + ((g - 1) % 26))::numeric, 2 )           AS valor_hora_extra,
-    -- mesmo conjunto de técnicos
     (ARRAY[
         'Lucas Almeida','Gustavo Moreira','Felipe Carvalho','Matheus Prado',
         'João Vilela','Pedro Martins','Thiago Lopes','Rafael Torres',
@@ -338,7 +287,6 @@ SELECT
         'Eduardo Matos','Fernando Duarte','Paulo Henrique','Ivan Rodrigues',
         'Adriano Silva','Marcos Vinícius','Douglas Pereira','Leandro Rocha'
     ])[((g - 1) % 40) + 1]                              AS tecnico,
-    -- obras
     (ARRAY[
         'Residencial Vila Verde','Edifício Horizonte','Condomínio Alto do Vale',
         'Shopping Leste','Residencial Marina Park','Edifício Atlântico',
@@ -346,17 +294,13 @@ SELECT
         'Centro Empresarial Norte','Vila do Campo','Solar das Dunas',
         'Morada da Serra','Residencial Vale Azul','Praia Tower'
     ])[((g - 1) % 15) + 1]                              AS obra,
-    -- status A / P / R
     (ARRAY['A','P','R'])[((g - 1) % 3) + 1]             AS status,
-    -- encarregado (nome, não o código — seguindo seu DDL)
     (ARRAY[
         'Rogério Campos','Luiz Carvalho','Patrícia Moura','Henrique Ribeiro',
         'Maurício Farias','Cláudia Rezende','Ricardo Peixoto','Daniela Vasconcelos',
         'Sérgio Matos','Camila Siqueira','Eduardo Brito','Mariana Telles'
     ])[((g - 1) % 12) + 1]                              AS encarregado,
-    -- comentário
     'Registro automático ' || g::text                   AS comentario,
-    -- justificativa só quando for recusado (R)
     CASE
         WHEN (ARRAY['A','P','R'])[((g - 1) % 3) + 1] = 'R' THEN
             (ARRAY[
@@ -368,12 +312,12 @@ SELECT
             ])[((g - 1) % 5) + 1]
         ELSE NULL
     END                                                 AS justificativa,
-    -- gestor entre 1 e 6
-    ((g - 1) % 6) + 1                                   AS cod_gestor
+    ((g - 1) % 6) + 1                                   AS cod_gestor,
+    'H'                                                 AS tipo_registro
 FROM generate_series(1, 5000) AS g;
 
 -- ==========================================
--- BLOCO 11: CUMPRIDAS_GESTOR (127 linhas)
+-- BLOCO 10: horas_gestor - REGISTROS TIPO 'C' (CUMPRIDAS) - 127
 -- ==========================================
 WITH params_cumpridas AS (
   SELECT
@@ -401,9 +345,9 @@ WITH params_cumpridas AS (
       'Falha não solucionada'
     ] AS justificativas_recusa
 )
-INSERT INTO cumpridas_gestor
+INSERT INTO horas_gestor
 (cod, data_solicitacao, data_hora_extra, duracao_intervalo, valor_hora_extra,
- tecnico, obra, status, encarregado, comentario, justificativa, cod_gestor)
+ tecnico, obra, status, encarregado, comentario, justificativa, cod_gestor, tipo_registro)
 SELECT
   g AS cod,
   DATE '2023-12-10' + ((g-1) % 365) AS data_solicitacao,
@@ -424,10 +368,9 @@ SELECT
       p.justificativas_recusa[ ((g-1) % array_length(p.justificativas_recusa,1)) + 1 ]
     ELSE NULL
   END AS justificativa,
-  ((g-1) % 6) + 1 AS cod_gestor
+  ((g-1) % 6) + 1 AS cod_gestor,
+  'C'                                               AS tipo_registro
 FROM generate_series(1, 127) g
 CROSS JOIN params_cumpridas p
 JOIN tecnico     t ON t.cod = ((g-1) % 40) + 1
 JOIN encarregado e ON e.cod = ((g-1) % 12) + 1;
-
-
